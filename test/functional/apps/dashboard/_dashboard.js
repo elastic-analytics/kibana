@@ -4,6 +4,8 @@ import {
   VisualizeConstants
 } from '../../../../src/core_plugins/kibana/public/visualize/visualize_constants';
 
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
 export default function ({ getService, getPageObjects }) {
   const retry = getService('retry');
   const log = getService('log');
@@ -44,6 +46,7 @@ export default function ({ getService, getPageObjects }) {
     });
 
     it('set the timepicker time to that which contains our test data', async function setTimepicker() {
+      await sleep(1000);
       await PageObjects.dashboard.setTimepickerInDataRange();
     });
 
