@@ -46,7 +46,7 @@ export default function ({ getService, getPageObjects }) {
     });
 
     it('set the timepicker time to that which contains our test data', async function setTimepicker() {
-      await sleep(60000);
+      await sleep(1000);
       await PageObjects.dashboard.setTimepickerInDataRange();
     });
 

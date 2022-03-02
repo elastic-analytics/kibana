@@ -4,6 +4,8 @@ export default function ({ getService, getPageObjects }) {
   const esArchiver = getService('esArchiver');
   const PageObjects = getPageObjects(['common', 'home', 'settings']);
 
+  // Continuously Failed, data is too large
+  // Backlog: https://sim.amazon.com/issues/P50402631
   describe.skip('test large number of fields @skipcloud', function () {
     const EXPECTED_FIELD_COUNT = '10006';
     before(async function () {
@@ -11,7 +13,6 @@ export default function ({ getService, getPageObjects }) {
       await PageObjects.settings.navigateTo();
       await PageObjects.settings.clickKibanaIndices();
       await PageObjects.settings.createIndexPattern('testhuge', 'date');
-
     });
 
     it('test_huge data should have expected number of fields', async function () {
