@@ -19,6 +19,8 @@ export default function ({ getService, getPageObjects }) {
     before(async function () {
       await PageObjects.dashboard.initTests();
       await PageObjects.dashboard.preserveCrossAppState();
+      await sleep(1000);
+
     });
 
     after(async function () {

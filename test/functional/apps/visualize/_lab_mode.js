@@ -4,12 +4,16 @@ export default function ({ getService, getPageObjects }) {
   const log = getService('log');
   const PageObjects = getPageObjects(['common', 'header', 'discover', 'settings']);
 
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+
   describe('visualize lab mode', () => {
 
     it('disabling does not break loading saved searches', async () => {
       await PageObjects.common.navigateToUrl('discover', '');
+      await sleep(1000);
       await PageObjects.discover.saveSearch('visualize_lab_mode_test');
       await PageObjects.discover.openSavedSearch();
+      await sleep(1000);
       const hasSaved = await PageObjects.discover.hasSavedSearch('visualize_lab_mode_test');
       expect(hasSaved).to.be(true);
 
