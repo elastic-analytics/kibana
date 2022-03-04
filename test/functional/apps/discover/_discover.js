@@ -13,6 +13,8 @@ export default function ({ getService, getPageObjects }) {
     defaultIndex: 'logstash-*',
   };
 
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+
   describe('discover app', function describeIndexTests() {
     const fromTime = '2015-09-19 06:31:44.000';
     const fromTimeString = 'September 19th 2015, 06:31:44.000';
@@ -51,8 +53,9 @@ export default function ({ getService, getPageObjects }) {
       });
 
       it('load query should show query name', async function () {
+        await sleep(1000);
         await PageObjects.discover.loadSavedSearch(queryName1);
-
+        await sleep(1000);
         await retry.try(async function () {
           expect(await PageObjects.discover.getCurrentQueryName()).to.be(
             queryName1
