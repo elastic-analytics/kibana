@@ -11,8 +11,9 @@ export default function ({ getService, loadTestFile }) {
       await esArchiver.loadIfNeeded('logstash_functional');
       await esArchiver.load('visualize');
       await kibanaServer.uiSettings.replace({ 'dateFormat:tz': 'UTC', 'defaultIndex': 'logstash-*' });
+      
     });
-
+    loadTestFile(require.resolve('./_lab_mode'));
     loadTestFile(require.resolve('./_spy_panel'));
     loadTestFile(require.resolve('./_chart_types'));
     loadTestFile(require.resolve('./_experimental_vis'));
@@ -33,7 +34,6 @@ export default function ({ getService, loadTestFile }) {
     loadTestFile(require.resolve('./_input_control_vis'));
     loadTestFile(require.resolve('./_histogram_request_start'));
     loadTestFile(require.resolve('./_vega_chart'));
-    loadTestFile(require.resolve('./_lab_mode'));
     loadTestFile(require.resolve('./_linked_saved_searches.js'));
   });
 }

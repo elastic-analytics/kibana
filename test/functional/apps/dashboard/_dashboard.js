@@ -18,9 +18,8 @@ export default function ({ getService, getPageObjects }) {
   describe('dashboard tab', function describeIndexTests() {
     before(async function () {
       await PageObjects.dashboard.initTests();
-      await PageObjects.dashboard.preserveCrossAppState();
       await sleep(1000);
-
+      await PageObjects.dashboard.preserveCrossAppState();
     });
 
     after(async function () {

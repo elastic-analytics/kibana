@@ -9,6 +9,7 @@ export default function ({ getService, getPageObjects }) {
   describe('visualize lab mode', () => {
 
     it('disabling does not break loading saved searches', async () => {
+      await sleep(1000);
       await PageObjects.common.navigateToUrl('discover', '');
       await sleep(1000);
       await PageObjects.discover.saveSearch('visualize_lab_mode_test');
@@ -35,6 +36,7 @@ export default function ({ getService, getPageObjects }) {
     after(async () => {
       await PageObjects.header.clickManagement();
       await PageObjects.settings.clickKibanaSettings();
+      await sleep(1000);
       await PageObjects.settings.clearAdvancedSettings('visualize:enableLabs');
     });
 
